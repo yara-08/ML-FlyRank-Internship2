@@ -1,0 +1,11 @@
+{
+  "held_out_pages": 6163,
+  "practical_review_queue": 50,
+  "practical_queue_share": 0.0081,
+  "score_min": 0.01,
+  "score_median": 0.515,
+  "score_max": 0.94,
+  "top20_mean_decline_score": 0.919,
+  "required_monitoring_fields_present": true,
+  "remaining_monitoring_missing_values": 0
+}
