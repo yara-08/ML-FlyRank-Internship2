@@ -1,14 +1,465 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>FlyRank Content Refresh Research</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prioritizing Content Refresh Opportunities with Machine Learning: A Client-Grouped Evaluation</title>
+
+    <!-- Styling will be added in Step 7 -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Prioritizing Content Refresh Opportunities with Machine Learning</h1>
+    <!-- ========================================
+         HEADER / PAPER IDENTITY
+         ======================================== -->
 
-    <p>This is my research paper.</p>
+    <header class="site-header">
+        <div class="header-content">
+
+            <p class="eyebrow">FLYRANK MACHINE LEARNING INTERNSHIP</p>
+
+            <h1>
+                Prioritizing Content Refresh Opportunities with Machine Learning
+            </h1>
+
+            <p class="subtitle">
+                A client-grouped evaluation of declining-content prediction
+                using a Random Forest classifier
+            </p>
+
+            <div class="paper-meta">
+                <span>Yara Ahmed Abdallah</span>
+                <span>·</span>
+                <span>2026</span>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- ========================================
+         NAVIGATION
+         ======================================== -->
+
+    <nav class="paper-nav" aria-label="Paper sections">
+        <div class="nav-inner">
+
+            <a href="#introduction">Introduction</a>
+            <a href="#data">Data</a>
+            <a href="#methodology">Methodology</a>
+            <a href="#results">Results</a>
+            <a href="#limitations">Limitations</a>
+            <a href="#recommendations">Recommendations</a>
+            <a href="#reproducibility">Reproducibility</a>
+            <a href="#acknowledgments">Acknowledgments</a>
+
+        </div>
+    </nav>
+
+
+    <!-- ========================================
+         MAIN PAPER
+         ======================================== -->
+
+    <main class="paper">
+
+
+        <!-- ====================================
+             ABSTRACT
+             ==================================== -->
+
+        <section class="abstract" id="abstract">
+
+            <p class="section-label">ABSTRACT</p>
+
+            <h2>Abstract</h2>
+
+            <p>
+                <!-- Final 5-sentence abstract goes here. -->
+            </p>
+
+        </section>
+
+
+        <!-- ====================================
+             1. INTRODUCTION
+             ==================================== -->
+
+        <section id="introduction">
+
+            <p class="section-label">01</p>
+
+            <h2>Introduction / Problem Statement</h2>
+
+            <p>
+                <!-- Final Introduction text goes here. -->
+            </p>
+
+        </section>
+
+
+        <!-- ====================================
+             2. DATA
+             ==================================== -->
+
+        <section id="data">
+
+            <p class="section-label">02</p>
+
+            <h2>Data</h2>
+
+            <p>
+                <!-- Final Data section goes here. -->
+            </p>
+
+            <!-- Data / split visual will be added later -->
+
+            <figure class="figure-placeholder">
+                <div class="placeholder-box">
+                    Data split visual
+                </div>
+
+                <figcaption>
+                    Figure X. Dataset and client-grouped train/test split.
+                </figcaption>
+            </figure>
+
+        </section>
+
+
+        <!-- ====================================
+             3. METHODOLOGY
+             ==================================== -->
+
+        <section id="methodology">
+
+            <p class="section-label">03</p>
+
+            <h2>Methodology</h2>
+
+            <p>
+                <!-- Final Methodology introduction goes here. -->
+            </p>
+
+
+            <h3>3.1 Analytical assumptions</h3>
+
+            <p>
+                <!-- Final text -->
+            </p>
+
+
+            <h3>3.2 Outcome definition</h3>
+
+            <p>
+                <!-- Final text -->
+            </p>
+
+
+            <h3>3.3 Predictive features and preprocessing</h3>
+
+            <p>
+                <!-- Final text -->
+            </p>
+
+
+            <h3>3.4 Rule-based baseline</h3>
+
+            <p>
+                <!-- Final text -->
+            </p>
+
+
+            <h3>3.5 Model and validation design</h3>
+
+            <p>
+                <!-- Final text -->
+            </p>
+
+
+            <h3>3.6 Leakage checks</h3>
+
+            <p>
+                <!-- Final text -->
+            </p>
+
+        </section>
+
+
+        <!-- ====================================
+             4. RESULTS
+             ==================================== -->
+
+        <section id="results">
+
+            <p class="section-label">04</p>
+
+            <h2>Results</h2>
+
+            <p>
+                <!-- Final Results introduction goes here. -->
+            </p>
+
+
+            <h3>4.1 Model performance versus baseline</h3>
+
+            <p>
+                <!-- Final text -->
+            </p>
+
+            <!-- Metrics table -->
+
+            <div class="table-placeholder">
+                Results comparison table
+            </div>
+
+
+            <!-- Figure 1 -->
+
+            <figure class="figure-placeholder">
+
+                <div class="placeholder-box">
+                    Figure 1 — Model performance versus baseline
+                </div>
+
+                <figcaption>
+                    Figure 1. Model performance versus the rule-based baseline.
+                </figcaption>
+
+            </figure>
+
+
+            <h3>4.2 Error analysis</h3>
+
+            <p>
+                <!-- Final text -->
+            </p>
+
+            <!-- Confusion matrix table -->
+
+            <div class="table-placeholder">
+                Confusion matrix
+            </div>
+
+
+            <!-- Figure 2 -->
+
+            <figure class="figure-placeholder">
+
+                <div class="placeholder-box">
+                    Figure 2 — Confusion matrix
+                </div>
+
+                <figcaption>
+                    Figure 2. Confusion matrix for the validated Random Forest.
+                </figcaption>
+
+            </figure>
+
+
+            <h3>4.3 Feature contribution</h3>
+
+            <p>
+                <!-- Final text -->
+            </p>
+
+            <!-- Feature importance table -->
+
+            <div class="table-placeholder">
+                Feature importance table
+            </div>
+
+
+            <!-- Figure 3 -->
+
+            <figure class="figure-placeholder">
+
+                <div class="placeholder-box">
+                    Figure 3 — Top-10 permutation importance
+                </div>
+
+                <figcaption>
+                    Figure 3. Top-10 features by permutation importance on the
+                    held-out test set.
+                </figcaption>
+
+            </figure>
+
+
+            <h3>4.4 Held-out queue composition</h3>
+
+            <p>
+                <!-- Final text -->
+            </p>
+
+
+            <!-- Figure 4 -->
+
+            <figure class="figure-placeholder">
+
+                <div class="placeholder-box">
+                    Figure 4 — Held-out archetype distribution
+                </div>
+
+                <figcaption>
+                    Figure 4. Distribution of review archetypes across the
+                    complete held-out queue.
+                </figcaption>
+
+            </figure>
+
+        </section>
+
+
+        <!-- ====================================
+             5. LIMITATIONS
+             ==================================== -->
+
+        <section id="limitations">
+
+            <p class="section-label">05</p>
+
+            <h2>Limitations &amp; Honest Framing</h2>
+
+            <p>
+                <!-- Final Limitations text goes here. -->
+            </p>
+
+        </section>
+
+
+        <!-- ====================================
+             6. RECOMMENDATIONS
+             ==================================== -->
+
+        <section id="recommendations">
+
+            <p class="section-label">06</p>
+
+            <h2>Ranked Recommendations</h2>
+
+            <p>
+                <!-- Final Recommendations text goes here. -->
+            </p>
+
+            <ol class="recommendation-list">
+
+                <li>
+                    <strong>Prioritize the highest-ranked pages for review.</strong>
+                    <!-- Text -->
+                </li>
+
+                <li>
+                    <strong>
+                        Investigate substantial impression declines accompanied
+                        by zero recent clicks.
+                    </strong>
+                    <!-- Text -->
+                </li>
+
+                <li>
+                    <strong>
+                        Investigate pages that have lost all recent search visibility.
+                    </strong>
+                    <!-- Text -->
+                </li>
+
+                <li>
+                    <strong>
+                        Review broader performance declines when no more specific
+                        pattern is present.
+                    </strong>
+                    <!-- Text -->
+                </li>
+
+                <li>
+                    <strong>
+                        Do not force an explanation when the available evidence
+                        is insufficient.
+                    </strong>
+                    <!-- Text -->
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- ====================================
+             7. REPRODUCIBILITY
+             ==================================== -->
+
+        <section id="reproducibility">
+
+            <p class="section-label">07</p>
+
+            <h2>Reproducibility</h2>
+
+            <p>
+                <!-- Final Reproducibility text goes here. -->
+            </p>
+
+            <div class="resource-list">
+
+                <div class="resource-placeholder">
+                    Main capstone notebook
+                </div>
+
+                <div class="resource-placeholder">
+                    GitHub repository
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             8. ACKNOWLEDGMENTS
+             ==================================== -->
+
+        <section id="acknowledgments">
+
+            <p class="section-label">08</p>
+
+            <h2>Acknowledgments &amp; Data Credit</h2>
+
+            <p>
+                <!-- Final Acknowledgments text goes here. -->
+            </p>
+
+            <p>
+                <strong>Data source:</strong>
+                <a href="https://flyrank.ai" target="_blank" rel="noopener">
+                    FlyRank AI
+                </a>
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+
+    <footer class="site-footer">
+
+        <p>
+            Built as part of the FlyRank Machine Learning Internship.
+        </p>
+
+        <p>
+            © 2026 Yara Ahmed Abdallah
+        </p>
+
+    </footer>
+
 
 </body>
 </html>
