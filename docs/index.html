@@ -32,7 +32,7 @@ figure{margin:32px 0 40px;padding:18px;border:1px solid var(--line);border-radiu
 <p>The intended use is to help determine <strong>which pages should receive attention first for further content-performance investigation</strong>. The model is designed as decision support rather than an automatic content-refresh system. A high model score indicates that a page resembles patterns associated with the declining class in the evaluated data; it does not establish that the page is incorrect, that it should definitely be refreshed, or that a refresh would improve future search performance.</p>
 </section>
 <section id="data"><h2>2.  Data</h2>
-<p>This study uses the anonymized `content_refresh_anonymized.csv` dataset provided as part of the FlyRank Machine Learning Internship. The dataset contains <strong>30,000 content records across 44 columns</strong>, with each record representing an anonymized content page and its associated search-performance, engagement, content, and freshness signals.</p>
+<p>This study uses the anonymized <code>content_refresh_anonymized.csv</code> dataset provided as part of the FlyRank Machine Learning Internship. The dataset contains <strong>30,000 content records across 44 columns</strong>, with each record representing an anonymized content page and its associated search-performance, engagement, content, and freshness signals.</p>
 <p>The available variables include measures of search demand and visibility, such as search volume, impressions, clicks, and average search position; engagement measures such as sessions and engaged sessions; and page-level characteristics including content length and days since last update. These variables provide the observable signals used to model whether a page belongs to the declining class.</p>
 <h2>2.1 Study population and outcome</h2>
 <p>The analysis used all <strong>30,000 records</strong> in the provided dataset. The outcome was derived from trend_direction, with down treated as the declining class and all remaining observed categories treated as non-declining. This resulted in <strong>16,262 declining pages (54.2%)</strong> and <strong>13,738 non-declining pages (45.8%)</strong>.</p>
@@ -41,10 +41,10 @@ figure{margin:32px 0 40px;padding:18px;border:1px solid var(--line);border-radiu
 <p>↓</p>
 
 <h2>2.2 Variables and preprocessing</h2>
-<p>The model used numerical and encoded categorical features representing search visibility, search performance, engagement, content characteristics, and freshness. Representative variables included search_volume, impressions_90d, clicks_90d, sessions_90d, engaged_sessions_90d, days_since_last_update, ctr, avg_position, char_count, and word_count.</p>
+<p>The model used numerical and encoded categorical features representing search visibility, search performance, engagement, content characteristics, and freshness. Representative variables included <code>search_volume</code>, <code>impressions_90d</code>, <code>clicks_90d</code>, <code>sessions_90d</code>, <code>engaged_sessions_90d</code>, <code>days_since_last_update</code>, <code>ctr</code>, <code>avg_position</code>, <code>char_count</code>, and <code>word_count</code>.</p>
 <p>Several variables contained missing values, including char_count, word_count, competition, search volume, CPC, and scroll_rate. Missing numerical values were handled using <strong>medians calculated from the training data</strong>, with corresponding missingness indicators added before model fitting. The same training-derived medians were then applied to the held-out test data.</p>
 <h2>2.3 Exclusions</h2>
-<p>Variables that could directly reveal the outcome or introduce identifier-based shortcuts were excluded from predictive modeling. These included trend_direction, trend_pct, target, content_id, and client_id. The baseline-derived variables baseline_score and baseline_prediction were also excluded so that the Random Forest would not directly reproduce the rule-based baseline.</p>
+<p>Variables that could directly reveal the outcome or introduce identifier-based shortcuts were excluded from predictive modeling. These included <code>trend_direction</code>, <code>trend_pct</code>, <code>target</code>, <code>content_id</code>, and <code>client_id</code>. The baseline-derived variables <code>baseline_score</code> and <code>baseline_prediction</code> were also excluded so that the Random Forest would not directly reproduce the rule-based baseline.</p>
 <p>The dataset is anonymized. The public research artifact does not expose client names, private URLs, private search queries, or other identifying information.</p>
 </section>
 <section id="methodology"><h2>3.  Methodology</h2>
@@ -54,7 +54,7 @@ figure{margin:32px 0 40px;padding:18px;border:1px solid var(--line);border-radiu
 <p>The analysis is <strong>observational rather than causal</strong>. The model estimates whether a page resembles patterns associated with the declining class in the evaluated data; it does not attempt to establish why a page declined or whether a particular content intervention would improve future search performance.</p>
 <p>The primary validation design therefore focuses on <strong>generalization across unseen clients</strong>, rather than treating the evaluation as a causal or fully time-aware study.</p>
 <h2>3.2 Outcome definition</h2>
-<p>The binary classification target was derived from trend_direction:</p>
+<p>The binary classification target was derived from <code>trend_direction</code>:</p>
 <ul>
 <li>down → <strong>1      (declining)</strong></li>
 <li>all other      observed trend categories → <strong>0 (non-declining)</strong></li>
@@ -65,16 +65,16 @@ figure{margin:32px 0 40px;padding:18px;border:1px solid var(--line);border-radiu
 <p>The Random Forest used page-level features representing search visibility, search performance, engagement, content characteristics, and freshness.</p>
 <p>Representative features included:</p>
 <ul>
-<li>search_volume</li>
-<li>impressions_90d</li>
-<li>clicks_90d</li>
-<li>sessions_90d</li>
-<li>engaged_sessions_90d</li>
-<li>days_since_last_update</li>
-<li>ctr</li>
-<li>avg_position</li>
-<li>char_count</li>
-<li>word_count</li>
+<li><code>search_volume</code></li>
+<li><code>impressions_90d</code></li>
+<li><code>clicks_90d</code></li>
+<li><code>sessions_90d</code></li>
+<li><code>engaged_sessions_90d</code></li>
+<li><code>days_since_last_update</code></li>
+<li><code>ctr</code></li>
+<li><code>avg_position</code></li>
+<li><code>char_count</code></li>
+<li><code>word_count</code></li>
 </ul>
 <p>Categorical variables were one-hot encoded. Missing numerical values were handled using <strong>medians calculated from the training data</strong>, with missingness indicators added for variables containing missing values. The same training-derived medians were applied to the held-out test set. After preprocessing, no missing values remained in either matrix.</p>
 <p>All preprocessing parameters derived from the data were determined using the training set before being applied to the held-out test set, preventing information from the held-out data from influencing model preparation.</p>
@@ -85,11 +85,11 @@ figure{margin:32px 0 40px;padding:18px;border:1px solid var(--line);border-radiu
 <li><strong>Freshness:</strong> 0–3      points according to freshness tier</li>
 <li><strong>Search      visibility:</strong> 0–3 points according to impression tier</li>
 </ul>
-<p>The resulting score ranges from <strong>0 to 6</strong>. Pages with a score of <strong>4 or higher</strong> receive the baseline reason code STALE_VISIBLE and the action label REFRESH_CONTENT.</p>
-<p>For ranking, pages are ordered by baseline score, with impressions_90d used as a tiebreaker.</p>
+<p>The resulting score ranges from <strong>0 to 6</strong>. Pages with a score of <strong>4 or higher</strong> receive the baseline reason code <code>STALE_VISIBLE</code> and the action label <code>REFRESH_CONTENT</code>.</p>
+<p>For ranking, pages are ordered by baseline score, with <code>impressions_90d</code> used as a tiebreaker.</p>
 <p>The baseline was intentionally designed to be simple and interpretable. It provides a transparent reference for assessing whether the Random Forest captures predictive information beyond freshness and visibility alone.</p>
 <h2>3.5 Model and validation design</h2>
-<p>The selected model was a <strong>Random Forest Classifier</strong> with <strong>200 trees</strong> and random_state=42.</p>
+<p>The selected model was a <strong>Random Forest Classifier</strong> with <strong>200 trees</strong> and <code>random_state=42</code>.</p>
 <p>The primary evaluation used a <strong>client-grouped train/test split</strong>. Rather than randomly assigning individual pages to the two sets, all pages belonging to a given client were kept in the same partition. This produced:</p>
 <ul>
 <li><strong>Training:</strong> 23,837      pages from 25 clients</li>
@@ -102,13 +102,13 @@ figure{margin:32px 0 40px;padding:18px;border:1px solid var(--line);border-radiu
 <h2>3.6 Leakage checks</h2>
 <p>Before model fitting, variables that could directly expose the outcome or allow the model to learn entity-specific shortcuts were excluded. These included:</p>
 <ul>
-<li>trend_direction</li>
-<li>trend_pct</li>
-<li>target</li>
-<li>content_id</li>
-<li>client_id</li>
-<li>baseline_score</li>
-<li>baseline_prediction</li>
+<li><code>trend_direction</code></li>
+<li><code>trend_pct</code></li>
+<li><code>target</code></li>
+<li><code>content_id</code></li>
+<li><code>client_id</code></li>
+<li><code>baseline_score</code></li>
+<li><code>baseline_prediction</code></li>
 </ul>
 <p>Target-related variables were excluded because they could leak outcome information into the predictive features. Client and content identifiers were excluded to prevent the model from learning entity-specific patterns rather than generalizable page-level signals. The baseline-derived variables were excluded so that the Random Forest could not directly reproduce the rule-based baseline.</p>
 <p>The grouped validation design provided additional protection against client-level leakage by ensuring that no client appeared in both the training and held-out test sets.</p>
@@ -232,7 +232,7 @@ figure{margin:32px 0 40px;padding:18px;border:1px solid var(--line);border-radiu
 </tr>
 </tbody>
 </table>
-<p>Recent impression measures were substantially more important than the remaining individual features. In particular, impressions_last_30d and impressions_prev_30d had considerably larger permutation-importance values than the other features evaluated.</p>
+<p>Recent impression measures were substantially more important than the remaining individual features. In particular, <code>impressions_last_30d</code> and <code>impressions_prev_30d</code> had considerably larger permutation-importance values than the other features evaluated.</p>
 <p>This indicates that recent search-visibility information contained strong predictive signal for distinguishing declining from non-declining pages in this dataset. However, feature importance describes <strong>model behavior rather than causal importance</strong>: it does not establish that changes in impressions cause a page to decline.</p>
 <figure><img src="figures/random_forest_top10_feature_importance.png" alt="Top-10 features by permutation importance."><figcaption><strong>Figure 3. Top-10 features by permutation importance.</strong> Importance values represent the mean reduction in F1 score following feature permutation.</figcaption></figure>
 <h2>4.5 Held-out queue composition</h2>
@@ -279,8 +279,8 @@ figure{margin:32px 0 40px;padding:18px;border:1px solid var(--line);border-radiu
 </tr>
 </tbody>
 </table>
-<p>The largest category was MODEL_PRIORITY_NO_SIMPLE_SIGNAL, comprising <strong>2,639 pages (42.8%)</strong>. These pages received a relatively high model ranking but did not match one of the predefined observable signal patterns. Retaining this category avoids assigning an unsupported explanation when the available signals do not provide a clear interpretation.</p>
-<p>The remaining pages were distributed across more specific observable patterns, with DECLINING_WITHOUT_CLICKS representing the largest of these categories at <strong>1,607 pages (26.1%)</strong>.</p>
+<p>The largest category was <code>MODEL_PRIORITY_NO_SIMPLE_SIGNAL</code>, comprising <strong>2,639 pages (42.8%)</strong>. These pages received a relatively high model ranking but did not match one of the predefined observable signal patterns. Retaining this category avoids assigning an unsupported explanation when the available signals do not provide a clear interpretation.</p>
+<p>The remaining pages were distributed across more specific observable patterns, with <code>DECLINING_WITHOUT_CLICKS</code> representing the largest of these categories at <strong>1,607 pages (26.1%)</strong>.</p>
 <p>The resulting distribution demonstrates that the model-ranked queue contains both pages with recognizable performance patterns and pages requiring broader investigation. The archetypes therefore provide <strong>context for organizing review workload</strong>, rather than evidence that any particular pattern causes declining performance.</p>
 <figure><img src="figures/held_out_archetype_distribution.png" alt="Held-out queue archetype distribution."><figcaption><strong>Figure 4. Held-out queue archetype distribution.</strong> Distribution of review archetypes across all 6,163 pages in the held-out queue.</figcaption></figure>
 </section>
@@ -288,7 +288,7 @@ figure{margin:32px 0 40px;padding:18px;border:1px solid var(--line);border-radiu
 <p>This work should be interpreted as a <strong>decision-support prototype for prioritizing content reviews</strong>, rather than as a causal or autonomous content-optimization system. The results provide evidence that Random Forest can predict the dataset's declining label under the evaluated validation design, but they do not establish why pages decline, what intervention should be applied, or whether acting on model predictions would improve future search performance.</p>
 <h2>5.1 What the results can and cannot establish</h2>
 <p>The Random Forest answers a specific question: <strong>which pages in the dataset are more likely to belong to the declining class?</strong> It does not answer why those pages are declining or whether they should be refreshed.</p>
-<p>The same distinction applies to the review archetypes. An archetype describes a <strong>pattern observed in a page's available performance signals</strong>. For example, a page may be placed in `DECLINING_WITHOUT_CLICKS` because its observed signals match that pattern. This does not mean that the lack of clicks caused the decline; it only identifies a pattern that can guide further investigation.</p>
+<p>The same distinction applies to the review archetypes. An archetype describes a <strong>pattern observed in a page's available performance signals</strong>. For example, a page may be placed in <code>DECLINING_WITHOUT_CLICKS</code> because its observed signals match that pattern. This does not mean that the lack of clicks caused the decline; it only identifies a pattern that can guide further investigation.</p>
 <p>The model's score should also be interpreted as a <strong>ranking signal</strong>. A page with a higher score is ranked more highly by the model for review, but the score is not a probability that the page will decline and does not indicate how much the page would benefit from an intervention.</p>
 <p><strong>In short, the model identifies pages that warrant attention; it does not diagnose the cause of their performance or determine what action will improve it.</strong></p>
 <h2>5.2 Temporal uncertainty</h2>
@@ -315,16 +315,16 @@ figure{margin:32px 0 40px;padding:18px;border:1px solid var(--line);border-radiu
 <p>Reviewers should begin with pages receiving the highest model scores for the declining class rather than treating all pages equally. In the held-out set of 6,163 pages, the highest-ranked page received a model score of <strong>0.940</strong>, and the mean score among the top 20 pages was <strong>0.919</strong>.</p>
 <p>These scores provide a practical mechanism for concentrating review capacity on pages the model considers most relevant to the declining class. The model score should be treated as a <strong>ranking signal</strong>, not as a guarantee of future decline or expected intervention benefit.</p>
 <h2>6.2 Investigate substantial impression declines accompanied by zero recent clicks</h2>
-<p>Among the top 50 model-ranked pages, <strong>39 pages (78%)</strong> were classified as DECLINING_WITHOUT_CLICKS.</p>
+<p>Among the top 50 model-ranked pages, <strong>39 pages (78%)</strong> were classified as <code>DECLINING_WITHOUT_CLICKS</code>.</p>
 <p>For these pages, reviewers should investigate recent search-result visibility, click-through behavior, and whether the page remains aligned with its intended search context. The pattern provides a useful diagnostic starting point but should not be interpreted as evidence that the absence of clicks caused the observed decline.</p>
 <h2>6.3 Investigate pages with recent loss of search visibility</h2>
-<p><strong>10 of the top 50 pages (20%)</strong> were classified as RECENT_VISIBILITY_LOSS, meaning they had impressions in the previous 30-day period but none in the last 30 days.</p>
+<p><strong>10 of the top 50 pages (20%)</strong> were classified as <code>RECENT_VISIBILITY_LOSS</code>, meaning they had impressions in the previous 30-day period but none in the last 30 days.</p>
 <p>These pages should first be checked for whether the apparent visibility loss reflects a genuine performance change or another underlying issue, such as indexing, technical, measurement, or other search-related factors. A content intervention should only be considered after the underlying change has been verified.</p>
 <h2>6.4 Investigate broader visibility declines when no specific pattern is present</h2>
 <p>Pages showing substantial visibility decline without matching the more specific review patterns should undergo broader investigation using the available performance and freshness signals.</p>
 <p>This category is intentionally less prescriptive: when the available evidence does not point toward a specific diagnostic pathway, reviewers should investigate the surrounding context before deciding whether a content change is warranted.</p>
 <h2>6.5 Preserve a human-review pathway for cases without a clear explanation</h2>
-<p>Across the full held-out queue, <strong>42.8% of pages</strong> were classified as MODEL_PRIORITY_NO_SIMPLE_SIGNAL. These pages received sufficient model priority for review but did not match one of the predefined observable patterns.</p>
+<p>Across the full held-out queue, <strong>42.8% of pages</strong> were classified as <code>MODEL_PRIORITY_NO_SIMPLE_SIGNAL</code>. These pages received sufficient model priority for review but did not match one of the predefined observable patterns.</p>
 <p>Rather than forcing these pages into an unsupported explanation, they should remain in a <strong>general human-review category</strong>. This preserves an important distinction between a model's ability to identify pages for investigation and its ability to explain why those pages may be declining.</p>
 <p><strong>Overall recommendation</strong></p>
 <p>The most appropriate use of the model is therefore as a <strong>review-prioritization tool</strong>. The highest-ranked pages should receive attention first, with specific observable patterns used to guide the initial diagnostic checks.</p>
@@ -334,9 +334,9 @@ figure{margin:32px 0 40px;padding:18px;border:1px solid var(--line);border-radiu
 <p>The analysis is designed to be <strong>inspectable and reproducible from the project repository</strong>. The notebooks, analysis code, generated figures, and supporting outputs are organized within the repository so that the work can be reviewed and, where applicable, rerun.</p>
 <p>The main analysis is documented in the capstone notebook:</p>
 <ul>
-<li><strong>work/notebooks/capstone.ipynb</strong> —      end-to-end capstone analysis, including the baseline, Random Forest model,      client-grouped validation, leakage checks, results, limitations,      recommendations, and supporting paper artifacts.</li>
+<li><strong><code>work/notebooks/capstone.ipynb/</code></strong> —      end-to-end capstone analysis, including the baseline, Random Forest model,      client-grouped validation, leakage checks, results, limitations,      recommendations, and supporting paper artifacts.</li>
 </ul>
-<p>Supporting analysis code and generated outputs are maintained within the repository, including the relevant materials under <strong>work/</strong>, <strong>scripts/</strong>, and <strong>outputs/</strong>. The web-ready copies of the figures presented in this paper are stored under <strong>docs/figures/</strong>; the original analysis figures remain under <strong>work/figures/</strong>.</p>
+<p>Supporting analysis code and generated outputs are maintained within the repository, including the relevant materials under <strong><code>work/</code></strong>, <strong><code>scripts/</code></strong>, and <strong><code>outputs/</code></strong>. The web-ready copies of the figures presented in this paper are stored under <strong><code>docs/figures/</code></strong>; the original analysis figures remain under <strong><code>work/figures/</code></strong>.</p>
 <p>The complete project repository is available here:</p>
 <p><a href="https://github.com/yara-08/ML-FlyRank-Internship2"><strong>ML-FlyRank-Internship2</strong></a></p>
 <p>The results reported in this paper should be interpreted in the context of the <strong>dataset, feature set, model configuration, preprocessing, and client-grouped validation design</strong> described in the preceding sections. Reproducing the reported results therefore requires using the same analytical setup and assumptions documented in the repository.</p>
