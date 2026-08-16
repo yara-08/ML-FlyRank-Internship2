@@ -39,11 +39,7 @@ figure{margin:32px 0 40px;padding:18px;border:1px solid var(--line);border-radiu
 <p>For evaluation, the records were divided using a <strong>client-grouped train/test split</strong>. The training set contained <strong>23,837 records from 25 clients</strong>, while the held-out test set contained <strong>6,163 records from 7 clients</strong>. No client appeared in both sets, allowing the held-out evaluation to test performance on clients not represented in training.</p>
 <p><strong>30,000 anonymized content records</strong></p>
 <p>↓</p>
-<p><strong>Client-grouped train/test split</strong></p>
-<p>↙︎　　　　　　　　　↘︎</p>
-<p><strong>Training set</strong>　　　　<strong>Held-out test set</strong>
-23,837 records　　　　6,163 records
-25 clients　　　　　 7 clients</p>
+
 <h2>2.2 Variables and preprocessing</h2>
 <p>The model used numerical and encoded categorical features representing search visibility, search performance, engagement, content characteristics, and freshness. Representative variables included search_volume, impressions_90d, clicks_90d, sessions_90d, engaged_sessions_90d, days_since_last_update, ctr, avg_position, char_count, and word_count.</p>
 <p>Several variables contained missing values, including char_count, word_count, competition, search volume, CPC, and scroll_rate. Missing numerical values were handled using <strong>medians calculated from the training data</strong>, with corresponding missingness indicators added before model fitting. The same training-derived medians were then applied to the held-out test data.</p>
