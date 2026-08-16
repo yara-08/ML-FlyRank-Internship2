@@ -1,0 +1,422 @@
+/* =========================================================
+   FLYRANK RESEARCH PAPER
+   Global styles
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. RESET
+   --------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    background: #ffffff;
+    color: #202124;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.75;
+}
+
+
+/* ---------------------------------------------------------
+   2. GENERAL TYPOGRAPHY
+   --------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+nav,
+.eyebrow,
+.section-label,
+.paper-meta,
+.site-footer {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
+    color: #17191c;
+}
+
+h1 {
+    font-size: clamp(2.3rem, 5vw, 4.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    max-width: 900px;
+    margin-bottom: 24px;
+}
+
+h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin-top: 42px;
+    margin-bottom: 14px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+strong {
+    color: #17191c;
+}
+
+a {
+    color: #155eef;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* ---------------------------------------------------------
+   3. HEADER
+   --------------------------------------------------------- */
+
+.site-header {
+    border-bottom: 1px solid #e5e7eb;
+    background: #fafafa;
+}
+
+.header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 90px 32px 70px;
+}
+
+.eyebrow {
+    margin: 0 0 24px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #5f6368;
+}
+
+.subtitle {
+    max-width: 760px;
+    margin-bottom: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #5f6368;
+}
+
+.paper-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #5f6368;
+}
+
+
+/* ---------------------------------------------------------
+   4. NAVIGATION
+   --------------------------------------------------------- */
+
+.paper-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    padding: 0 24px;
+
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.nav-inner::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-inner a {
+    flex-shrink: 0;
+
+    padding: 15px 12px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+
+    color: #5f6368;
+    white-space: nowrap;
+}
+
+.nav-inner a:hover {
+    color: #155eef;
+    text-decoration: none;
+}
+
+
+/* ---------------------------------------------------------
+   5. MAIN PAPER CONTAINER
+   --------------------------------------------------------- */
+
+.paper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 70px 32px 100px;
+}
+
+.paper section {
+    margin-bottom: 100px;
+}
+
+
+/* ---------------------------------------------------------
+   6. SECTION LABELS
+   --------------------------------------------------------- */
+
+.section-label {
+    margin-bottom: 14px;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+
+    color: #155eef;
+}
+
+
+/* ---------------------------------------------------------
+   7. ABSTRACT
+   --------------------------------------------------------- */
+
+.abstract {
+    padding: 38px 42px;
+
+    background: #f8f9fb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+}
+
+.abstract h2 {
+    margin-bottom: 18px;
+}
+
+
+/* ---------------------------------------------------------
+   8. LISTS
+   --------------------------------------------------------- */
+
+ul,
+ol {
+    padding-left: 28px;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+
+/* ---------------------------------------------------------
+   9. RECOMMENDATIONS
+   --------------------------------------------------------- */
+
+.recommendation-list {
+    padding-left: 30px;
+}
+
+.recommendation-list li {
+    padding-left: 8px;
+    margin-bottom: 28px;
+}
+
+.recommendation-list strong {
+    display: block;
+    margin-bottom: 7px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+
+/* ---------------------------------------------------------
+   10. TABLE PLACEHOLDERS
+   --------------------------------------------------------- */
+
+.table-placeholder {
+    margin: 30px 0;
+    padding: 28px;
+
+    border: 1px dashed #c7cbd1;
+    border-radius: 8px;
+
+    background: #fafafa;
+
+    text-align: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+
+/* ---------------------------------------------------------
+   11. FIGURES
+   --------------------------------------------------------- */
+
+figure {
+    margin: 42px 0;
+}
+
+.figure-placeholder {
+    margin-left: -40px;
+    margin-right: -40px;
+}
+
+.placeholder-box {
+    min-height: 280px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px dashed #c7cbd1;
+    border-radius: 8px;
+
+    background: #fafafa;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+figcaption {
+    margin-top: 12px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.5;
+
+    color: #6b7280;
+}
+
+
+/* ---------------------------------------------------------
+   12. RESOURCE BLOCKS
+   --------------------------------------------------------- */
+
+.resource-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.resource-placeholder {
+    padding: 18px 20px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+
+    background: #fafafa;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+}
+
+
+/* ---------------------------------------------------------
+   13. FOOTER
+   --------------------------------------------------------- */
+
+.site-footer {
+    border-top: 1px solid #e5e7eb;
+
+    padding: 36px 24px;
+
+    text-align: center;
+
+    font-size: 0.78rem;
+    line-height: 1.6;
+
+    color: #6b7280;
+}
+
+
+/* ---------------------------------------------------------
+   14. MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    .header-content {
+        padding: 60px 22px 50px;
+    }
+
+    h1 {
+        font-size: 2.35rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .paper {
+        padding: 50px 22px 70px;
+    }
+
+    .paper section {
+        margin-bottom: 75px;
+    }
+
+    .abstract {
+        padding: 28px 24px;
+    }
+
+    .figure-placeholder {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .placeholder-box {
+        min-height: 220px;
+    }
+
+    .nav-inner {
+        padding: 0 12px;
+    }
+
+    .nav-inner a {
+        padding: 13px 10px;
+        font-size: 0.76rem;
+    }
+}
